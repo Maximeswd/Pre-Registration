@@ -3,6 +3,19 @@
 
 ### Research Project: Predicting the Time to Fill Vacancies: A Pre-registered Comparison of Four Common Feature Encoders
 
+#### Data Collection
+The data is already collected by the company and thus no further data collection is needed. 
+
+#### Hypotheses
+Hypothesis 1: Regarding the low-cardinality variables, Catboost encoding will outperform One-Hot encoding, Quantile encoding and Target encoding. One-hot encoding will outperform Quantile encoding and Target encoding. Quantile encoding will outperform Target encoding. 
+
+Hypothesis 2: Regarding the high-cardinality variables, Catboost encoding will outperform One-Hot encoding, Quantile encoding and Target encoding. Quantile encoding will outperform One-Hot encoding, and Target encoding. Target encoding will outperform One-Hot encoding. 
+
+Hypothesis 3: Regarding all the categorical variables, Catboost encoding will outperform One-Hot encoding, Quantile encoding and Target encoding. Quantile encoding will outperform One-Hot encoding, and Target encoding. Target encoding will outperform One-Hot encoding. 
+
+#### The target variable
+The target variable is the Time-To-Fill, which is calculated by taking the difference between the date that a vacancy is opened and the date that the applicant is hired. 
+
 #### Data Cleaning & Pre-processing
 Data cleaning and pre-processing are of high importance. Therefore, the following steps were conducted.
 1.	Removing variables: Duplicates, irrelevant observations (applicants that were not hired, and pipeline requisitions), columns that contained more than 50% missing values, identifying variables and variables within the time frame of our target variable. 
@@ -15,7 +28,7 @@ As feature engineering is an important part of every machine learning project, t
 2.	Count variables: Two count variables are engineered as both of these count variables are expected to have some value for predicting the TTF. The first consists of 'similar counts' by calculating how many similar requisitions are opened in the previous month. Since the date of opening is before out predicted time period, this will not cause data leakage. The second count variable conists of 'hire counts' which is calculated by taking all the requisitions that are opened in respect to the same recruiter in the previous month. 
 3.	Categorical variables: All categorical variables will be transformed by four different Encoding Techniques, namely One-Hot Encoding, Target Encoding, Quantile Encoding, and Catboost Encoding. 
 
-#### Encoder Comparison
-The feature encoding techniques will be compared through the Wilcoxon paired one-sided tests, which is used to compare two gradient boosted decision tree models (LightGBM) on a single sample to assess whether their MAE scores differ. The tests are paired, because the same sample is used for all the encoders. The tests are one sided so if the one-sided p-value of the Wilcoxon paired t-test was <.05, the encoder was defined as better performing. 
+#### Encoder Comparisons
+The feature encoding techniques will be compared through the Wilcoxon paired two-sided tests, which is used to compare two gradient boosted decision tree models (LightGBM) on a single sample to assess whether their MAE scores differ. The tests are paired, because the same sample is used for all the encoders. The tests are two sided so if the two-sided p-value of the Wilcoxon paired test was <.05, the two encoding techniques compared are significantly different. Therefore, if the p-value is significant, the encoding technique with the lowest MAE is found to be significantly better performing than the other encoding technique. 
 
 
