@@ -1,5 +1,5 @@
 # Pre-Registration
- Pre-Registration of my Master Thesis Project: Behavioural Data Science
+ Pre-Registration of my Master Thesis Project
 
 ### Research Project: Predicting the Time to Fill Vacancies: A Pre-registered Comparison of Four Common Feature Encoders
 
